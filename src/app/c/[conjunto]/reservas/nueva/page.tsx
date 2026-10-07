@@ -1,3 +1,4 @@
+import { Luggage } from "lucide-react";
 import { FilasHuespedes } from "@/components/filas-huespedes";
 import { Formulario } from "@/components/formulario";
 import { AreaTexto, Campo, Encabezado, Entrada, Selector, Tarjeta, Vacio } from "@/components/ui";
@@ -14,8 +15,8 @@ export default async function NuevaReserva({ params }: { params: Promise<{ conju
   const unidades = ctx.misUnidades.filter((u) => u.relacion !== "arrendatario" && u.unidad.permite_renta_corta);
   const hoy = hoyColombia();
 
-  if (!ctx.conjunto.permite_renta_corta) return <Vacio>El reglamento de este conjunto no permite renta corta.</Vacio>;
-  if (!unidades.length) return <Vacio>No tienes unidades habilitadas para renta corta. Solicítalo a la administración.</Vacio>;
+  if (!ctx.conjunto.permite_renta_corta) return <Vacio icono={Luggage}>El reglamento de este conjunto no permite renta corta.</Vacio>;
+  if (!unidades.length) return <Vacio icono={Luggage}>No tienes unidades habilitadas para renta corta. Solicítalo a la administración.</Vacio>;
 
   return (
     <>

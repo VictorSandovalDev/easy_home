@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FilasHuespedes } from "@/components/filas-huespedes";
 import { Formulario } from "@/components/formulario";
-import { Boton, Etiqueta, Tabla, Tarjeta } from "@/components/ui";
+import { Boton, Etiqueta, Tabla, Tarjeta, Volver } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
 import { nombrePerfil, perfilesPorId } from "@/lib/perfiles";
 import { ESTADO_RESERVA } from "@/lib/reservas";
@@ -36,7 +35,7 @@ export default async function Reserva({ params }: { params: Promise<{ conjunto: 
 
   return (
     <div className="space-y-4">
-      <Link href={ctx.ruta("/reservas")} className="text-sm text-tenue hover:underline">← Huéspedes</Link>
+      <Volver href={ctx.ruta("/reservas")}>Huéspedes</Volver>
       <Tarjeta>
         <div className="mb-2 flex flex-wrap items-center gap-2">
           <Etiqueta tono={ESTADO_RESERVA[r.estado].tono}>{ESTADO_RESERVA[r.estado].texto}</Etiqueta>

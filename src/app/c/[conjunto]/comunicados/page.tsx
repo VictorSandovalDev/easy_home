@@ -1,3 +1,4 @@
+import { Megaphone } from "lucide-react";
 import Link from "next/link";
 import { BotonLink, Encabezado, Etiqueta, Tarjeta, Vacio } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
@@ -20,7 +21,7 @@ export default async function Comunicados({ params }: { params: Promise<{ conjun
         descripcion="Información oficial del consejo y la administración."
         accion={ctx.esGestor && <BotonLink href={ctx.ruta("/comunicados/nuevo")}>Nuevo comunicado</BotonLink>}
       />
-      {!comunicados?.length && <Vacio>No hay comunicados publicados.</Vacio>}
+      {!comunicados?.length && <Vacio icono={Megaphone}>No hay comunicados publicados.</Vacio>}
       <div className="space-y-3">
         {comunicados?.map((c) => (
           <Link key={c.id} href={ctx.ruta(`/comunicados/${c.id}`)} className="block">

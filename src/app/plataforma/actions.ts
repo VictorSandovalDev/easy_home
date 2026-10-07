@@ -19,7 +19,7 @@ export async function crearConjunto(_: EstadoAccion, datos: FormData): Promise<E
       nombre: String(datos.get("nombre")).trim(),
       nit: String(datos.get("nit") ?? "").trim() || null,
       ciudad: String(datos.get("ciudad") ?? "").trim() || null,
-      color_primario: String(datos.get("color_primario") ?? "#0f766e"),
+      color_primario: String(datos.get("color_primario") ?? "#2563eb"),
     })
     .select("id")
     .single();

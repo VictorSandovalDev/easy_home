@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Formulario } from "@/components/formulario";
-import { Etiqueta, Tarjeta } from "@/components/ui";
+import { Etiqueta, Tarjeta, Volver } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
 import { fecha, nombreUnidad } from "@/lib/tipos";
 import { votar } from "../actions";
@@ -39,7 +38,7 @@ export default async function Votacion({ params }: { params: Promise<{ conjunto:
 
   return (
     <div className="max-w-3xl space-y-4">
-      <Link href={ctx.ruta("/votaciones")} className="text-sm text-tenue hover:underline">← Votaciones</Link>
+      <Volver href={ctx.ruta("/votaciones")}>Votaciones</Volver>
       <Tarjeta>
         <div className="mb-2 flex flex-wrap items-center gap-2">
           <Etiqueta tono={estado.tono}>{estado.texto}</Etiqueta>

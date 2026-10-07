@@ -1,3 +1,4 @@
+import { Building2 } from "lucide-react";
 import Link from "next/link";
 import { Formulario } from "@/components/formulario";
 import { AreaTexto, Campo, Encabezado, Etiqueta, Selector, Tabla, Tarjeta, Vacio } from "@/components/ui";
@@ -27,7 +28,7 @@ export default async function Unidades({ params }: { params: Promise<{ conjunto:
       />
       <div className={ctx.esAdministracion ? "grid gap-6 lg:grid-cols-[1fr_320px]" : ""}>
         {!unidades.length ? (
-          <Vacio>No hay unidades registradas.</Vacio>
+          <Vacio icono={Building2}>No hay unidades registradas.</Vacio>
         ) : (
           <Tabla>
             <thead><tr><th>Unidad</th><th>Propietario</th><th>Coef.</th><th>Cuota</th><th /></tr></thead>

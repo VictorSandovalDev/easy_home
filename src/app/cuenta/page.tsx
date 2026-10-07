@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { Formulario } from "@/components/formulario";
-import { Campo, Entrada, Selector, Tarjeta } from "@/components/ui";
+import { Campo, Entrada, Selector, Tarjeta, Volver } from "@/components/ui";
 import { usuarioActual } from "@/lib/contexto";
 import { createClient } from "@/lib/supabase/server";
 import { guardarPerfil } from "./actions";
@@ -14,11 +13,11 @@ export default async function Cuenta({ searchParams }: { searchParams: Promise<{
   const { data: perfil } = await supabase.from("perfiles").select("*").eq("id", user.id).single();
 
   return (
-    <main className="mx-auto max-w-lg space-y-6 p-6">
-      <Link href="/" className="text-sm text-tenue hover:underline">← Mis conjuntos</Link>
+    <main className="mx-auto max-w-lg space-y-6 px-4 py-10">
+      <Volver href="/">Mis conjuntos</Volver>
       <h1 className="text-2xl font-semibold">Mi cuenta</h1>
       {nueva && (
-        <p className="rounded-lg bg-marca/10 p-3 text-sm text-marca">
+        <p className="rounded-xl border border-marca/20 bg-marca/5 p-4 text-sm text-marca">
           Bienvenido. Completa tus datos y define una contraseña para ingresar.
         </p>
       )}

@@ -1,3 +1,4 @@
+import { Vote } from "lucide-react";
 import Link from "next/link";
 import { BotonLink, Encabezado, Etiqueta, Tarjeta, Vacio } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
@@ -21,7 +22,7 @@ export default async function Votaciones({ params }: { params: Promise<{ conjunt
         descripcion="Cada unidad tiene un voto, emitido por su propietario."
         accion={ctx.esGestor && <BotonLink href={ctx.ruta("/votaciones/nueva")}>Nueva votación</BotonLink>}
       />
-      {!data?.length && <Vacio>No hay votaciones.</Vacio>}
+      {!data?.length && <Vacio icono={Vote}>No hay votaciones.</Vacio>}
       <div className="space-y-3">
         {data?.map((v) => {
           const e = estadoVotacion(v);

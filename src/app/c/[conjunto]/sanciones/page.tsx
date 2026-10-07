@@ -1,3 +1,4 @@
+import { Gavel } from "lucide-react";
 import Link from "next/link";
 import { BotonLink, Encabezado, Etiqueta, Tabla, Vacio } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
@@ -28,7 +29,7 @@ export default async function Sanciones({ params }: { params: Promise<{ conjunto
         accion={ctx.esAdministracion && <BotonLink href={ctx.ruta("/sanciones/nueva")}>Nueva notificación</BotonLink>}
       />
       {!sanciones.length ? (
-        <Vacio>No hay notificaciones.</Vacio>
+        <Vacio icono={Gavel}>No hay notificaciones.</Vacio>
       ) : (
         <Tabla>
           <thead><tr><th>Fecha</th><th>Unidad</th><th>Destinatario</th><th>Tipo</th><th>Art.</th><th>Valor</th><th>Estado</th></tr></thead>

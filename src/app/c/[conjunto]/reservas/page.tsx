@@ -1,3 +1,4 @@
+import { Luggage } from "lucide-react";
 import Link from "next/link";
 import { BotonLink, Encabezado, Etiqueta, Tabla, Vacio } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
@@ -44,7 +45,7 @@ export default async function Reservas({
         <Link href={ctx.ruta("/reservas?ver=historial")} className={ver === "historial" ? "font-semibold text-marca" : "text-tenue"}>Historial</Link>
       </div>
       {!reservas.length ? (
-        <Vacio>No hay reservas{ver === "historial" ? " anteriores" : " vigentes"}.</Vacio>
+        <Vacio icono={Luggage}>No hay reservas{ver === "historial" ? " anteriores" : " vigentes"}.</Vacio>
       ) : (
         <Tabla>
           <thead><tr><th>Unidad</th><th>Llegada</th><th>Salida</th><th>Huéspedes</th><th>Plataforma</th><th>Estado</th></tr></thead>

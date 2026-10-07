@@ -25,8 +25,8 @@ export function Formulario({
   return (
     <form action={despachar} className={className}>
       {children}
-      {estado?.error && <p className="rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-700 dark:text-red-400">{estado.error}</p>}
-      {estado?.ok && <p className="rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-emerald-700 dark:text-emerald-400">{estado.ok}</p>}
+      {estado?.error && <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{estado.error}</p>}
+      {estado?.ok && <p className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">{estado.ok}</p>}
       <Enviar texto={textoBoton} variante={variante} />
     </form>
   );

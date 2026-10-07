@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Formulario } from "@/components/formulario";
-import { Campo, Entrada, Selector, Tabla, Tarjeta } from "@/components/ui";
+import { Campo, Entrada, Selector, Tabla, Tarjeta, Volver } from "@/components/ui";
 import { exigir } from "@/lib/contexto";
 import { nombrePerfil, perfilesPorId } from "@/lib/perfiles";
 import { fecha, NOMBRE_RELACION, nombreUnidad, type Relacion } from "@/lib/tipos";
@@ -22,7 +21,7 @@ export default async function Unidad({ params }: { params: Promise<{ conjunto: s
 
   return (
     <div className="space-y-4">
-      <Link href={ctx.ruta("/unidades")} className="text-sm text-tenue hover:underline">← Unidades</Link>
+      <Volver href={ctx.ruta("/unidades")}>Unidades</Volver>
       <h1 className="text-2xl font-semibold">Unidad {nombreUnidad(u)}</h1>
 
       <Tabla>

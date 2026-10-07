@@ -1,22 +1,13 @@
 @import "tailwindcss";
 
+/* Paleta clara institucional. --marca la sobreescribe cada conjunto (marca blanca). */
 :root {
-  --marca: #0f766e;
-  --fondo: #f6f7f9;
+  --marca: #2563eb;
+  --fondo: #f4f7fc;
   --superficie: #ffffff;
-  --texto: #111827;
-  --tenue: #6b7280;
-  --borde: #e5e7eb;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fondo: #0b0d10;
-    --superficie: #14171c;
-    --texto: #e5e7eb;
-    --tenue: #9ca3af;
-    --borde: #262b33;
-  }
+  --texto: #0f172a;
+  --tenue: #64748b;
+  --borde: #e2e8f0;
 }
 
 @theme inline {
@@ -26,14 +17,19 @@
   --color-texto: var(--texto);
   --color-tenue: var(--tenue);
   --color-borde: var(--borde);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  color-scheme: light;
 }
 
 body {
   background: var(--fondo);
   color: var(--texto);
+  -webkit-font-smoothing: antialiased;
 }
 
-input, select, textarea {
-  color-scheme: light dark;
+::selection {
+  background: color-mix(in srgb, var(--marca) 20%, transparent);
 }

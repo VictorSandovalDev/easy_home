@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Formulario } from "@/components/formulario";
-import { Campo, Entrada, Tabla, Tarjeta } from "@/components/ui";
+import { Campo, Entrada, Tabla, Tarjeta, Volver } from "@/components/ui";
 import { createClient } from "@/lib/supabase/server";
 import { crearConjunto } from "./actions";
 
@@ -14,8 +14,8 @@ export default async function Plataforma() {
   const { data: conjuntos } = await supabase.from("conjuntos").select("id, slug, nombre, ciudad, dominio_personalizado, activo").order("creado_en", { ascending: false });
 
   return (
-    <main className="mx-auto max-w-5xl space-y-6 p-6">
-      <Link href="/" className="text-sm text-tenue hover:underline">← Inicio</Link>
+    <main className="mx-auto max-w-6xl space-y-6 px-4 py-10 sm:px-6">
+      <Volver href="/">Inicio</Volver>
       <h1 className="text-2xl font-semibold">Plataforma · Conjuntos clientes</h1>
       <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
         <Tabla>
@@ -41,7 +41,7 @@ export default async function Plataforma() {
               <Campo etiqueta="NIT"><Entrada name="nit" /></Campo>
               <Campo etiqueta="Ciudad"><Entrada name="ciudad" /></Campo>
             </div>
-            <Campo etiqueta="Color de marca"><Entrada name="color_primario" type="color" defaultValue="#0f766e" className="h-10 p-1" /></Campo>
+            <Campo etiqueta="Color de marca"><Entrada name="color_primario" type="color" defaultValue="#2563eb" className="h-10 p-1" /></Campo>
             <hr className="border-borde" />
             <Campo etiqueta="Correo del administrador"><Entrada name="email_admin" type="email" /></Campo>
             <Campo etiqueta="Nombre del administrador"><Entrada name="nombre_admin" /></Campo>

@@ -1,3 +1,4 @@
+import { Gavel } from "lucide-react";
 import { Formulario } from "@/components/formulario";
 import { AreaTexto, Campo, Encabezado, Entrada, Selector, Tarjeta, Vacio } from "@/components/ui";
 import { exigir } from "@/lib/contexto";
@@ -27,7 +28,7 @@ export default async function NuevaSancion({ params }: { params: Promise<{ conju
   const perfiles = await perfilesPorId(ctx.supabase, filas.map((f) => f.usuario_id));
   const arts = (articulos ?? []).sort((a, b) => Number(b.sancionable) - Number(a.sancionable) || a.numero.localeCompare(b.numero, "es", { numeric: true }));
 
-  if (!filas.length) return <Vacio>Primero asigna propietarios o administradores de propiedad a las unidades.</Vacio>;
+  if (!filas.length) return <Vacio icono={Gavel}>Primero asigna propietarios o administradores de propiedad a las unidades.</Vacio>;
 
   return (
     <>

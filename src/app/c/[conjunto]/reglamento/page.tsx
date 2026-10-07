@@ -1,3 +1,4 @@
+import { ClipboardList } from "lucide-react";
 import { Formulario } from "@/components/formulario";
 import { AreaTexto, Campo, Encabezado, Entrada, Etiqueta, Tarjeta, Vacio } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
@@ -33,7 +34,7 @@ export default async function Reglamento({
 
       <div className={ctx.esAdministracion ? "grid gap-6 lg:grid-cols-[1fr_340px]" : ""}>
         <div className="space-y-3">
-          {!articulos.length && <Vacio>{q ? "Sin resultados." : "El reglamento aún no ha sido cargado."}</Vacio>}
+          {!articulos.length && <Vacio icono={ClipboardList}>{q ? "Sin resultados." : "El reglamento aún no ha sido cargado."}</Vacio>}
           {articulos.map((a) => (
             <Tarjeta key={a.id} id={`art-${a.numero}`}>
               <div className="mb-1 flex flex-wrap items-center gap-2">

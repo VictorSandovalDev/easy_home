@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Etiqueta, Tarjeta } from "@/components/ui";
+import { Etiqueta, Tarjeta, Volver } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
 import { fecha } from "@/lib/tipos";
 
@@ -18,7 +17,7 @@ export default async function Comunicado({ params }: { params: Promise<{ conjunt
 
   return (
     <div className="max-w-3xl">
-      <Link href={ctx.ruta("/comunicados")} className="text-sm text-tenue hover:underline">← Comunicados</Link>
+      <Volver href={ctx.ruta("/comunicados")}>Comunicados</Volver>
       <Tarjeta className="mt-4">
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <Etiqueta tono="marca">{c.emisor === "consejo" ? "Consejo" : "Administración"}</Etiqueta>

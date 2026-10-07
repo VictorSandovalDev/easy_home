@@ -1,7 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Formulario } from "@/components/formulario";
-import { AreaTexto, Campo, Etiqueta, Selector, Tarjeta } from "@/components/ui";
+import { AreaTexto, Campo, Etiqueta, Selector, Tarjeta, Volver } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
 import { nombrePerfil, perfilesPorId } from "@/lib/perfiles";
 import { ESTADO_SANCION, TIPO_SANCION } from "@/lib/sanciones";
@@ -34,7 +33,7 @@ export default async function Sancion({ params }: { params: Promise<{ conjunto: 
 
   return (
     <div className="max-w-3xl space-y-4">
-      <Link href={ctx.ruta("/sanciones")} className="text-sm text-tenue hover:underline">← Volver</Link>
+      <Volver href={ctx.ruta("/sanciones")}>Volver</Volver>
       <Tarjeta>
         <div className="mb-3 flex flex-wrap items-center gap-2">
           <Etiqueta tono={ESTADO_SANCION[s.estado].tono}>{ESTADO_SANCION[s.estado].texto}</Etiqueta>
@@ -87,7 +86,7 @@ export default async function Sancion({ params }: { params: Promise<{ conjunto: 
         <Tarjeta>
           <h2 className="mb-3 font-semibold">Decisión de la administración</h2>
           {hoy <= s.plazo_descargos && s.estado === "notificada" && (
-            <p className="mb-3 rounded-lg bg-amber-500/10 p-3 text-sm text-amber-700 dark:text-amber-400">
+            <p className="mb-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
               El plazo de descargos sigue abierto. Para respetar el debido proceso, espera a que venza o a recibir los descargos antes de confirmar.
             </p>
           )}
