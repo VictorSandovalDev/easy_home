@@ -526,8 +526,8 @@ create policy "eventos: ver" on sancion_eventos for select using (
 create policy "eventos: crear" on sancion_eventos for insert with check (
   autor_id = auth.uid() and exists (
     select 1 from sanciones s where s.id = sancion_id and (
-      (tipo = 'descargo' and s.destinatario_id = auth.uid()) or
-      (tipo in ('decision','nota') and tiene_rol(s.conjunto_id, array['administracion']::rol_conjunto[]))
+      (sancion_eventos.tipo = 'descargo' and s.destinatario_id = auth.uid()) or
+      (sancion_eventos.tipo in ('decision','nota') and tiene_rol(s.conjunto_id, array['administracion']::rol_conjunto[]))
     )
   )
 );
@@ -570,7 +570,7 @@ create policy "accesos: porteria registra" on accesos for insert with check (
   registrado_por = auth.uid() and exists (
     select 1 from huespedes h join reservas r on r.id = h.reserva_id
     where h.id = huesped_id and tiene_rol(r.conjunto_id, array['porteria','administracion']::rol_conjunto[])
-      and (tipo = 'salida' or (r.estado in ('programada','en_curso') and current_date between r.check_in and r.check_out))
+      and (accesos.tipo = 'salida' or (r.estado in ('programada','en_curso') and current_date between r.check_in and r.check_out))
   )
 );
 
