@@ -9,7 +9,7 @@ export type Rol =
 export type Relacion = "propietario" | "administrador_propiedad" | "arrendatario";
 
 export const NOMBRE_ROL: Record<Rol, string> = {
-  administracion: "Administración",
+  administracion: "Administrador del conjunto",
   consejo: "Consejo",
   propietario: "Propietario",
   administrador_propiedad: "Administrador de propiedad",

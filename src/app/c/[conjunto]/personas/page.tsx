@@ -52,7 +52,7 @@ export default async function Personas({ params }: { params: Promise<{ conjunto:
             <Campo etiqueta="Rol">
               <Selector name="rol">
                 <option value="consejo">Consejo de administración</option>
-                <option value="administracion">Administración</option>
+                <option value="administracion">Administrador del conjunto</option>
                 <option value="porteria">Portería / vigilancia</option>
               </Selector>
             </Campo>

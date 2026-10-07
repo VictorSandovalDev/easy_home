@@ -58,8 +58,13 @@ const conjunto = await ok(
 const C = conjunto.id;
 
 console.log("Usuarios…");
+// El administrador antes usaba el alias "administracion"; se elimina para no dejar cuentas huérfanas.
+{
+  const { data: viejo } = await db.from("perfiles").select("id").eq("email", `administracion@${DOMINIO}`).maybeSingle();
+  if (viejo) await db.auth.admin.deleteUser(viejo.id);
+}
 const u = {
-  admin: await usuario("administracion", "Laura Gómez Arango", "300 412 8890", "52814732"),
+  admin: await usuario("administrador", "Laura Gómez Arango", "300 412 8890", "52814732"),
   consejo: await usuario("consejo", "Carlos Restrepo Vélez", "310 556 2201", "71234890"),
   consejo2: await usuario("consejo2", "Patricia Navarro Díaz", "315 772 3410", "45678123"),
   propietaria: await usuario("propietaria", "María Fernanda Ruiz", "301 998 1144", "1047382910"),
@@ -323,4 +328,4 @@ await reserva(
 
 console.log(`\nListo: /c/${SLUG}`);
 console.log(`Usuarios (contraseña ${CLAVE}):`);
-for (const a of ["administracion", "consejo", "propietaria", "anfitrion", "arrendatario", "porteria"]) console.log(`  ${a}@${DOMINIO}`);
+for (const a of ["administrador", "consejo", "propietaria", "anfitrion", "arrendatario", "porteria"]) console.log(`  ${a}@${DOMINIO}`);

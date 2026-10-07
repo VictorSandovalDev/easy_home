@@ -46,7 +46,7 @@ export default async function Sancion({ params }: { params: Promise<{ conjunto: 
           <div><dt className="text-tenue">Unidad</dt><dd>{nombreUnidad(s.unidad)}</dd></div>
           <div><dt className="text-tenue">Destinatario</dt><dd>{nombrePerfil(perfiles.get(s.destinatario_id))}</dd></div>
           <div><dt className="text-tenue">Fecha de los hechos</dt><dd>{fecha(s.fecha_hechos)}</dd></div>
-          <div><dt className="text-tenue">Emitida por</dt><dd>{nombrePerfil(perfiles.get(s.creada_por))} (Administración)</dd></div>
+          <div><dt className="text-tenue">Emitida por</dt><dd>{nombrePerfil(perfiles.get(s.creada_por))} (Administrador del conjunto)</dd></div>
         </dl>
         <h2 className="mt-5 text-sm font-medium text-tenue">Hechos</h2>
         <p className="mt-1 whitespace-pre-wrap">{s.hechos}</p>
