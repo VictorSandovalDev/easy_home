@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Formulario } from "@/components/formulario";
 import { Etiqueta, Tarjeta, Volver } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
-import { fecha, nombreUnidad } from "@/lib/tipos";
+import { fecha, nombreUnidad, porcentaje } from "@/lib/tipos";
 import { votar } from "../actions";
 import { estadoVotacion } from "@/lib/votaciones";
 
@@ -82,7 +82,7 @@ export default async function Votacion({ params }: { params: Promise<{ conjunto:
           <h2 className="mb-1 font-semibold">Resultados {estado.texto !== "Cerrada" && <span className="text-sm font-normal text-tenue">(parciales)</span>}</h2>
           <p className="mb-4 text-sm text-tenue">
             Participación: {votosEmitidos} de {totalUnidades} unidades
-            {v.ponderada && totalCoef > 0 && <> · {coefEmitido.toFixed(3)}% de {totalCoef.toFixed(3)}% del coeficiente</>}
+            {v.ponderada && totalCoef > 0 && <> · {porcentaje(coefEmitido)} de {porcentaje(totalCoef)} del coeficiente</>}
           </p>
           <div className="space-y-3">
             {filas.map((r) => {
@@ -92,7 +92,7 @@ export default async function Votacion({ params }: { params: Promise<{ conjunto:
                 <div key={r.opcion_id}>
                   <div className="mb-1 flex justify-between text-sm">
                     <span>{r.texto}</span>
-                    <span className="text-tenue">{r.votos} voto{Number(r.votos) === 1 ? "" : "s"} · {pct.toFixed(1)}%</span>
+                    <span className="text-tenue">{r.votos} voto{Number(r.votos) === 1 ? "" : "s"} · {porcentaje(pct, 1)}</span>
                   </div>
                   <div className="h-2 rounded-full bg-fondo">
                     <div className="h-2 rounded-full bg-marca" style={{ width: `${pct}%` }} />

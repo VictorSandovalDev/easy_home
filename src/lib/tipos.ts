@@ -82,3 +82,7 @@ export function separarArticulos(texto: string) {
 /** Fecha (YYYY-MM-DD) en Colombia, opcionalmente desplazada en días. */
 export const hoyColombia = (dias = 0) =>
   new Intl.DateTimeFormat("en-CA", { timeZone: "America/Bogota" }).format(new Date(Date.now() + dias * 86400_000));
+
+/** Porcentaje con formato colombiano: 85,2 % */
+export const porcentaje = (n: number, decimales = 2) =>
+  `${n.toLocaleString("es-CO", { maximumFractionDigits: decimales })} %`;

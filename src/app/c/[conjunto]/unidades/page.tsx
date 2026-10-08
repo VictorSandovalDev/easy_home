@@ -4,7 +4,7 @@ import { Formulario } from "@/components/formulario";
 import { AreaTexto, Campo, Encabezado, Etiqueta, Selector, Tabla, Tarjeta, Vacio } from "@/components/ui";
 import { exigir } from "@/lib/contexto";
 import { nombrePerfil, perfilesPorId } from "@/lib/perfiles";
-import { nombreUnidad, pesos } from "@/lib/tipos";
+import { nombreUnidad, pesos, porcentaje } from "@/lib/tipos";
 import { crearUnidades } from "./actions";
 
 export const metadata = { title: "Unidades" };
@@ -24,7 +24,7 @@ export default async function Unidades({ params }: { params: Promise<{ conjunto:
     <>
       <Encabezado
         titulo="Unidades"
-        descripcion={`${unidades.length} unidades · coeficiente total ${totalCoef.toFixed(3)}%${Math.abs(totalCoef - 100) > 0.01 && unidades.length ? " (debería sumar 100%)" : ""}`}
+        descripcion={`${unidades.length} unidades · coeficiente total ${porcentaje(totalCoef)}${Math.abs(totalCoef - 100) > 0.01 && unidades.length ? " (debería sumar 100%)" : ""}`}
       />
       <div className={ctx.esAdministracion ? "grid gap-6 lg:grid-cols-[1fr_320px]" : ""}>
         {!unidades.length ? (
@@ -39,7 +39,7 @@ export default async function Unidades({ params }: { params: Promise<{ conjunto:
                   <tr key={u.id}>
                     <td><Link href={ctx.ruta(`/unidades/${u.id}`)} className="font-medium hover:underline">{nombreUnidad(u)}</Link></td>
                     <td>{prop ? nombrePerfil(perfiles.get(prop.usuario_id)) : <span className="text-tenue">Sin asignar</span>}</td>
-                    <td>{Number(u.coeficiente).toFixed(3)}</td>
+                    <td>{porcentaje(Number(u.coeficiente), 3)}</td>
                     <td>{pesos(u.cuota_administracion)}</td>
                     <td>{u.permite_renta_corta && <Etiqueta tono="marca">Renta corta</Etiqueta>}</td>
                   </tr>

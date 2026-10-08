@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Building2, Gavel, Luggage, Megaphone, Vote } from "lucide-react";
 import { BotonLink, Etiqueta, Indicador, Tarjeta, TituloSeccion } from "@/components/ui";
 import { contextoConjunto } from "@/lib/contexto";
-import { fecha, hoyColombia, NOMBRE_RELACION, nombreUnidad } from "@/lib/tipos";
+import { fecha, hoyColombia, NOMBRE_RELACION, nombreUnidad, porcentaje } from "@/lib/tipos";
 
 export default async function Tablero({ params }: { params: Promise<{ conjunto: string }> }) {
   const ctx = await contextoConjunto((await params).conjunto);
@@ -40,19 +40,19 @@ export default async function Tablero({ params }: { params: Promise<{ conjunto: 
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-marca via-marca to-blue-800 px-6 py-8 text-white shadow-xl shadow-marca/20 sm:px-10">
         <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
         <div className="pointer-events-none absolute -bottom-24 right-40 h-56 w-56 rounded-full bg-sky-300/20 blur-3xl" />
-        <p className="relative text-sm font-medium capitalize text-blue-100">{fechaLarga}</p>
+        <p className="relative text-sm font-medium text-blue-100">{fechaLarga[0].toUpperCase() + fechaLarga.slice(1)}</p>
         <h1 className="relative mt-1 text-3xl font-semibold tracking-tight">{primerNombre ? `Hola, ${primerNombre}` : "Bienvenido"}</h1>
         <p className="relative mt-2 max-w-xl text-blue-100">
           Esto es lo que está pasando hoy en {conjunto.nombre}.
         </p>
         <div className="relative mt-6 flex flex-wrap gap-2">
           {ctx.esGestor && (
-            <BotonLink href={ctx.ruta("/comunicados/nuevo")} className="bg-white text-marca shadow-none hover:bg-blue-50 hover:brightness-100">
+            <BotonLink href={ctx.ruta("/comunicados/nuevo")} variante="claro">
               <Megaphone className="h-4 w-4" /> Publicar comunicado
             </BotonLink>
           )}
           {ctx.misUnidades.some((u) => u.relacion !== "arrendatario" && u.unidad.permite_renta_corta) && (
-            <BotonLink href={ctx.ruta("/reservas/nueva")} className="bg-white/15 text-white shadow-none ring-1 ring-white/30 hover:bg-white/25 hover:brightness-100">
+            <BotonLink href={ctx.ruta("/reservas/nueva")} variante="translucido">
               <Luggage className="h-4 w-4" /> Registrar huéspedes
             </BotonLink>
           )}
@@ -136,7 +136,7 @@ export default async function Tablero({ params }: { params: Promise<{ conjunto: 
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="font-medium">{nombreUnidad(u.unidad)}</p>
-                    <p className="text-xs text-tenue">{NOMBRE_RELACION[u.relacion]} · coef. {Number(u.unidad.coeficiente).toFixed(2)}%</p>
+                    <p className="text-xs text-tenue">{NOMBRE_RELACION[u.relacion]} · coef. {porcentaje(Number(u.unidad.coeficiente))}</p>
                   </div>
                   {u.unidad.permite_renta_corta && <Etiqueta tono="marca">Renta corta</Etiqueta>}
                 </li>

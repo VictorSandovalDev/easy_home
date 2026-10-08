@@ -51,6 +51,9 @@ const estilosBoton = {
   secundario: "border border-borde bg-superficie text-texto shadow-sm hover:border-slate-300 hover:bg-slate-50",
   peligro: "bg-red-600 text-white shadow-sm hover:bg-red-700",
   fantasma: "text-marca hover:bg-marca/10",
+  // Para usar sobre fondos de color de marca (p. ej. el banner del tablero)
+  claro: "bg-white text-marca shadow-sm hover:bg-blue-50",
+  translucido: "bg-white/15 text-white ring-1 ring-white/30 hover:bg-white/25",
 };
 const baseBoton =
   "inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold outline-none transition disabled:pointer-events-none disabled:opacity-50";
